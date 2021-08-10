@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TodoList</title>
+  <style>
+      .done{text-decoration:line-through;}
+      h1{
+          margin-left:30px;
+          margin-top:30px;
+          font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+          font-size:50px;
+      }
+      #app{margin-left:30px;}
+      body{background-color:azure;}
+  </style>
+</head>
+<body>
+<h1>TodoList</h1>
+
+<div id="app">
+    <p>
+        <input type="text"
+        placeholder="タスクの入力"
+        v-model="newItemTitle"
+        v-on:keyup.enter="addTodo"></P>
+    <button v-on:click="deleteComplete()">完了したタスクを削除する</button>
+    <ul>
+        <li v-for="item in items">
+            <label v-bind:class="{done:item.isChecked}">
+                <input type="checkbox" v-model="item.isChecked">{{item.title}}
+            </label>
+        </li>
+    </ul>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="./main.js"></script>
+
+</body>
+</html>
